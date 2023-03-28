@@ -1,3 +1,5 @@
+import './Header.scss'; 
+
 import React, { useState } from 'react';
 import {
   Header,
@@ -16,25 +18,20 @@ import {
   HeaderMenuButton,
 } from 'carbon-components-react/lib/components/UIShell';
 
-import { action } from '@storybook/addon-actions';
-import { options } from '@storybook/addon-knobs';
-import {IdeFilter} from '@carbon/ibm-cloud-cognitive-cdai/lib/components/IdeFilter/index';
+
 
 
 
 import { Notification20, UserAvatar20, Switcher20,Terminal20 as Terminal } from '@carbon/icons-react';
-import { NotificationsPanel,useWebTerminal,
-  WebTerminal,
-  WebTerminalProvider } from '@carbon/ibm-products';
-import { Link } from 'react-router-dom';
+import { NotificationsPanel,useWebTerminal,WebTerminal,WebTerminalProvider } from '@carbon/ibm-products';
   
 import { sampleData } from './sampleData';
-import './Header.scss';
 
+import './Header.scss';
 
 export const CommonHeader = () => {
 
-    const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
+  const [isSideNavExpanded, setIsSideNavExpanded] = useState(false);
   const handleClickSideNavExpand = () => {
     setIsSideNavExpanded(!isSideNavExpanded);
 
@@ -43,81 +40,69 @@ export const CommonHeader = () => {
   const [open, setOpen] = useState(false);
   const [notificationsData, setNotificationsData] = useState(sampleData);
   const { openWebTerminal } = useWebTerminal();
-
+  const[openHead,setOpenHead]=useState(false);
 
   return (
     <>
-    
-      <HeaderContainer
+      <HeaderContainer 
         render={() => (
-          <Header aria-label="IBM [Product]">
+          <Header aria-label="ECO"  >
+
             <SkipToContent />
+
       <HeaderMenuButton
          aria-label="Open menu"
-         iscollapsible ='true'
+         isCollapsible
          onClick={handleClickSideNavExpand}
         isActive={isSideNavExpanded}/>
-            <HeaderName href="/" prefix="IBM">
-              [Product]
+
+            <HeaderName  href='#main' prefix="ECO">
+              [Products]
             </HeaderName>
+            
             <HeaderNavigation  aria-label="IBM [Platform]">
 
-         <HeaderMenuItem  element={Link} to="/page1">Overview</HeaderMenuItem>
+         <HeaderMenuItem  href="#page1">Overview</HeaderMenuItem>
 
          <HeaderMenu aria-label="OKR" menuLinkName="OKR">
-
-           <HeaderMenuItem  element={Link} to="/okr" >OKR</HeaderMenuItem>
-           <HeaderMenuItem  element={Link} to="/okr2" >OKR2</HeaderMenuItem>
-
+           <HeaderMenuItem  href='#okr' >OKR</HeaderMenuItem>
+           <HeaderMenuItem  href='#okr2' >OKR2</HeaderMenuItem>
            </HeaderMenu>
 
-          <HeaderMenuItem element={Link} to="/imp">Improve</HeaderMenuItem>
-
-           
           <HeaderMenu aria-label="KPI" menuLinkName="KPIs">
-          <HeaderMenuItem   element={Link} to="/review" >Review</HeaderMenuItem>
-           <HeaderMenuItem  element={Link} to="/comment" >Comments</HeaderMenuItem>
-           <HeaderMenuItem element={Link} to="/learn" >Learning</HeaderMenuItem>
+          <HeaderMenuItem href='#imp'>Improve</HeaderMenuItem>
+          <HeaderMenuItem   href='#review' >Review</HeaderMenuItem>
+           <HeaderMenuItem  href='#comment' >Comments</HeaderMenuItem>
+           <HeaderMenuItem href='#learn'>Learning</HeaderMenuItem>
           </HeaderMenu>
-          <HeaderMenuItem element={Link} to='/read' >Read</HeaderMenuItem>
+
+          <HeaderMenuItem href='#read' >Read</HeaderMenuItem>
 
          </HeaderNavigation>
 
-         <div style={{ margin: '1rem 1rem 2rem 10rem' }}>
 
-<IdeFilter
-  onChange={action('onChange')}
-  options={options}
-  placeholderText="Search for assets, people, tags or types..."
->
-  filter
-</IdeFilter>
-    </div>
 
             <HeaderGlobalBar>
+
+            <HeaderGlobalAction 
             
-            
+                aria-label="Notifications"
+                onClick={() => setOpen(!open)} >
+                <Notification20 />
+              </HeaderGlobalAction>
 
             <HeaderGlobalAction 
                 aria-label="Web terminal"
                 onClick={openWebTerminal}
                 tooltipAlignment="end"
                 iscollapsible ='true'
-
-                isActive={open}
-                
-              >
+                isActive={open} >
                 <Terminal />
               </HeaderGlobalAction>
 
-
               <HeaderGlobalAction 
-                aria-label="Notifications"
-                onClick={() => setOpen(!open)}
-              >
-                <Notification20 />
-              </HeaderGlobalAction>
-              <HeaderGlobalAction aria-label="User Avatar">
+              onClick={()=>setOpenHead(!openHead)}
+              aria-label="User Avatar">
          <UserAvatar20 />
          </HeaderGlobalAction>
 
@@ -126,33 +111,28 @@ export const CommonHeader = () => {
          </HeaderGlobalAction>
 
             </HeaderGlobalBar>
+            
             <SideNav aria-label="Side navigation" isPersistent={isSideNavExpanded} >
+
         <SideNavItems >
-          <SideNavMenu  title="links">
-            <SideNavMenuItem href='#' >link</SideNavMenuItem>
-            <SideNavMenuItem aria-current="page" >
-              Link
-            </SideNavMenuItem>
-            <SideNavMenuItem >Link</SideNavMenuItem>
+
+          <SideNavMenu  title="link1">
+            <SideNavMenuItem href='#read' >link</SideNavMenuItem>
           </SideNavMenu>
 
-          <SideNavMenu  title="links">
-            <SideNavMenuItem >Link</SideNavMenuItem>
-            <SideNavMenuItem aria-current="page" >
-              Link
-            </SideNavMenuItem>
-            <SideNavMenuItem >Link</SideNavMenuItem>
-          </SideNavMenu>
+          <SideNavMenu  title="link2">
+            <SideNavMenuItem href='#'>Link</SideNavMenuItem>
+            <SideNavMenuItem href='#'>Link</SideNavMenuItem>
+             </SideNavMenu>
 
-          <SideNavMenu  title="links">
+          <SideNavMenu  title="link3">
             <SideNavMenuItem >Link</SideNavMenuItem>
-            <SideNavMenuItem aria-current="page" >
-              Link
-            </SideNavMenuItem>
+            <SideNavMenuItem href='#'>Link</SideNavMenuItem>
             <SideNavMenuItem >Link</SideNavMenuItem>
           </SideNavMenu>
           
         </SideNavItems>
+        
       </SideNav> 
       
       
@@ -175,7 +155,8 @@ export const CommonHeader = () => {
         />
 
       <WebTerminal
-            closeIconDescription="Close terminal"
+            onClickOutside={() => openWebTerminal(false)}
+            closeIconDescription="Close "
             documentationLinksIconDescription="Documentation links"
             documentationLinks={[
               {
@@ -204,7 +185,6 @@ export const CommonHeader = () => {
               },
             ]}
           >
-            <div className="example-terminal">
               <p>Connection successful.</p>
 
               <p>
@@ -215,21 +195,13 @@ export const CommonHeader = () => {
 
               <p>Please see the docs of this component for more information.</p>
 
-              <p>joe bob:~$</p>
-            </div>
           </WebTerminal>
       
           </Header>
-          
+
         )}
         
       />
-      
-
-      
-
-      
-      
     </>
   );
 };

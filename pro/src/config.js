@@ -4,3 +4,4 @@ import { pkg } from '@carbon/ibm-products';
 pkg.component.Toolbar = true;
 pkg.component.ToolbarGroup = true;
 pkg.component.ToolbarButton = true;
+

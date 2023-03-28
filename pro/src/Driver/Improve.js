@@ -1,80 +1,115 @@
 import React from 'react';
 import { PageHeader } from '@carbon/ibm-products/lib/components';
-import { actionBarItems } from '../Main/elements/PageHeader';
+
 import { Row, Column, Grid } from 'carbon-components-react';
-import { DescriptionModule,TitleBarModule } from '@carbon/ibm-security';
 
-import { ResourceList } from 'carbon-addons-iot-react';
-import { select} from '@storybook/addon-knobs';
+import { DescriptionModule, TitleBarModule } from '@carbon/ibm-security';
 
+import { ResourceList, List, Tag, OverflowMenu, OverflowMenuItem } from 'carbon-addons-iot-react';
+
+import { select, boolean, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
 import { Edit16 } from '@carbon/icons-react';
 
- 
-const resourceData = [
-  {
-    id: 'row-0',
-    title: 'Item A',
-    description:
-      'Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.',
-  },
-  {
-    id: 'row-1',
-    title: 'Item B',
-    description:
-      'Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.',
-  },
-  {
-    id: 'row-2',
-    title: 'Item C',
-    description:
-      'Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed. Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.Lorem ipsun dolor sit amet, consectetur adipiscing elit. Nunc dui magna, finibus id tortor sed.',
-  },
-];
- 
+import { actionBarItems } from './elements/PageHeader';
+import { resourceData } from './elements/imporveData';
+import { sampleHierarchy } from './elements/makeData';
+
+
 export const Imp = () => {
 
 
   return (
     <>
-    <Row>
-      <PageHeader 
-              actionBarItems={actionBarItems}     
-                  actionBarOverflowAriaLabel="Overflow Menu"
+      <div style={{ margin: '-2rem -2rem 0rem -2rem', paddingBlockEnd: '3rem' }}>
 
- />
-    <DescriptionModule>
-    {({ getLayoutProps }) => (
-      <>
-        <TitleBarModule title="SECTION TITLE" />
+        <PageHeader
+          actionBarItems={actionBarItems}
+          title='IMPROVE' />
+      </div>
+      <Grid>
 
-        <p {...getLayoutProps()}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          finibus tortor eget est ornare, a ultrices risus tincidunt.
-          Suspendisse condimentum mauris at ornare tempor. Phasellus a arcu
-          ante. Morbi vitae ultrices quam, eget eleifend magna. Morbi quis
-          porttitor ex, in elementum tellus. In eget rutrum eros, eu scelerisque
-          risus. Phasellus vel pretium lorem, ut laoreet sapien. Cras ac purus
-          vitae velit efficitur iaculis. Nunc.
-        </p>
-      </>
-    )}
-  </DescriptionModule>
-  </Row>
-  <div style={{borderTop: "40px solid " }}>
-  <Row>
- <ResourceList
-      design={select('Resource list design', ['normal', 'inline'], 'normal')}
-      data={resourceData}
-    customAction={{
-      onClick: action('customAction.onClick'),
-      label: 'Configure',
-      icon: Edit16,
-    }}
-  />
-  </Row>
-  </div>
-     </>
+        <Row>
+
+
+          <Column style={{ paddingRight: '0rem', paddingLeft: '0rem', paddingBlockStart: '3rem' }}>
+            <DescriptionModule>
+              {({ getLayoutProps }) => (
+
+                <>
+                  <div style={{ color: 'white' }}>
+                    <TitleBarModule title="the power of improving" />
+
+                    <p {...getLayoutProps()}>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+                      finibus tortor eget est ornare, a ultrices risus tincidunt.
+                      Suspendisse condimentum mauris at ornare tempor. Phasellus a arcu
+                      ante. Morbi vitae ultrices quam, eget eleifend magna. Morbi quis
+                      porttitor ex, in elementum tellus. In eget rutrum eros, eu scelerisque
+                      risus. Phasellus vel pretium lorem, ut laoreet sapien. Cras ac purus
+                      vitae velit efficitur iaculis. Nunc.
+                    </p>
+                  </div>
+                </>
+              )}
+            </DescriptionModule>
+          </Column>
+        </Row>
+
+        <Row>
+          <Column style={{ paddingRight: '0rem', paddingLeft: '0rem', paddingBlockStart: '6rem' }}>
+            <ResourceList
+              design={select('Resource list design', ['normal', 'inline'], 'normal')}
+              data={resourceData}
+              customAction={{
+                onClick: action('customAction.onClick'),
+                label: 'Configure',
+                icon: Edit16,
+              }}
+            />
+          </Column>
+          <Column lg={14}>
+
+
+            <div style={{ width: 1000 }}>
+              <List
+                title='NY Yankees'
+                items={Object.entries(sampleHierarchy.MLB['American League']['New York Yankees']).map(
+                  ([key, value]) => ({
+                    id: key,
+                    content: {
+                      value: key,
+                      secondaryValue: value,
+                      tags: [
+                        <Tag type="blue" title="descriptor" key="tag1">
+                          default
+                        </Tag>,
+                      ],
+                      rowActions: () =>
+                        <OverflowMenu
+                          size="sm"
+                          flipped={document.dir !== 'rtl'}
+                          key={`${key}-list-item-button-${value}`}
+                        >
+                          <OverflowMenuItem itemText="Edit" />
+                          <OverflowMenuItem itemText="Add" />
+                          <OverflowMenuItem itemText="Delete" hasDivider isDelete />
+                        </OverflowMenu>,
+                    },
+                  })
+                )}
+                isLargeRow={boolean('isLargeRow', false)}
+                isLoading={boolean('isLoading', false)}
+                isVirtualList={boolean('isVirtualList', false)}
+              />
+            </div>
+          </Column>
+        </Row>
+
+      </Grid>
+
+    </>
 
   );
 };

@@ -1,14 +1,7 @@
 $feature-flags: (
-  ui-shell: true,
-  grid-columns-16: true,
   enable-css-custom-properties: true,
 );
 
-// Feature flags
-$css--font-face: true;
-$css--plex: true;
-
-
-
+// vars accounts for most things except for the typography
 @import 'carbon-components/scss/globals/scss/vars';
 @import 'carbon-components/scss/globals/scss/typography';

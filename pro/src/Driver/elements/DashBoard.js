@@ -1,0 +1,107 @@
+export const mockDataItems = [
+    {
+      dataItemId: 'torque_max',
+      dataSourceId: 'torque_max',
+      label: 'Torque Max',
+      aggregationMethod: 'max',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+        { id: 'mean', text: 'Mean' },
+        { id: 'max', text: 'Max' },
+        { id: 'min', text: 'Min' },
+      ],
+      grain: 'hourly',
+    },
+    {
+      dataItemId: 'torque_min',
+      dataSourceId: 'torque_min',
+      label: 'Torque Min',
+      aggregationMethod: 'min',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+        { id: 'mean', text: 'Mean' },
+        { id: 'max', text: 'Max' },
+        { id: 'min', text: 'Min' },
+      ],
+      grain: 'hourly',
+    },
+    {
+      dataItemId: 'torque_mean',
+      dataSourceId: 'torque_mean',
+      label: 'Torque Mean',
+      aggregationMethod: 'mean',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+        { id: 'mean', text: 'Mean' },
+        { id: 'max', text: 'Max' },
+        { id: 'min', text: 'Min' },
+      ],
+      grain: 'hourly',
+    },
+    {
+      dataItemId: 'torque',
+      dataSourceId: 'torque',
+      label: 'Torque',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+        { id: 'mean', text: 'Mean' },
+        { id: 'max', text: 'Max' },
+        { id: 'min', text: 'Min' },
+      ],
+    },
+    {
+      dataItemId: 'temperature',
+      dataSourceId: 'temperature',
+      label: 'Temperature',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+        { id: 'mean', text: 'Mean' },
+        { id: 'max', text: 'Max' },
+        { id: 'min', text: 'Min' },
+      ],
+    },
+    {
+      dataItemId: 'pressure',
+      dataSourceId: 'pressure',
+      label: 'Pressure',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+        { id: 'mean', text: 'Mean' },
+        { id: 'max', text: 'Max' },
+        { id: 'min', text: 'Min' },
+      ],
+    },
+    {
+      dataItemId: 'firmware',
+      dataItemType: 'DIMENSION',
+      dataSourceId: 'firmware',
+      label: 'firmware',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+      ],
+    },
+    {
+      dataItemId: 'manufacturer',
+      dataItemType: 'DIMENSION',
+      dataSourceId: 'manufacturer',
+      label: 'manufacturer',
+      aggregationMethods: [
+        { id: 'none', text: 'None' },
+        { id: 'last', text: 'Last' },
+      ],
+    },
+    {
+      dataItemId: 'v2pressure',
+      dataSourceId: 'v2pressure',
+      label: 'V2 Pressure',
+      hasStreamingMetricEnabled: true,
+    },
+  ];
+  

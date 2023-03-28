@@ -17,12 +17,13 @@
 }
 
 .carbon-theme-dropdown {
-  position: fixed;
-  bottom: 1rem; // stylelint-disable-line carbon/layout-token-use
-  left: 1rem; // stylelint-disable-line carbon/layout-token-use
+  position: absolute;
+  bottom: 3rem; // stylelint-disable-line carbon/layout-token-use
+  left: 20rem; // stylelint-disable-line carbon/layout-token-use
   min-width: 11.5rem;
 }
 
 .carbon-theme-dropdown .#{$prefix}--label {
   @include carbon--type-style('label-01');
 }
+

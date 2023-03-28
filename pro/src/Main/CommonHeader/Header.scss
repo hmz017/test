@@ -1,4 +1,4 @@
-
+@import './carbon';
 .bx--header {
 
     position: fixed;
@@ -9,5 +9,16 @@
     display: flex;
     height: 3rem;
     align-items: center;
-    background-color:rgb(223, 22, 22);
-  }
+    border-bottom: 1px solid #0e0d0d;
+    background-color:rgb(81, 100, 34);
+}
+
+
+.main--content {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 3rem);
+  align-items: center;
+  justify-content: center;
+  margin-top: $spacing-09;
+}
