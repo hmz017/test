@@ -1,4 +1,4 @@
-import './Header.scss'; 
+
 
 import React, { useState } from 'react';
 import {
@@ -19,15 +19,11 @@ import {
 } from 'carbon-components-react/lib/components/UIShell';
 
 
-
-
-
 import { Notification20, UserAvatar20, Switcher20,Terminal20 as Terminal } from '@carbon/icons-react';
 import { NotificationsPanel,useWebTerminal,WebTerminal,WebTerminalProvider } from '@carbon/ibm-products';
   
 import { sampleData } from './sampleData';
 
-import './Header.scss';
 
 export const CommonHeader = () => {
 
@@ -42,9 +38,13 @@ export const CommonHeader = () => {
   const { openWebTerminal } = useWebTerminal();
   const[openHead,setOpenHead]=useState(false);
 
+
+
+
+
   return (
     <>
-      <HeaderContainer 
+      <HeaderContainer className='bx--header'
         render={() => (
           <Header aria-label="ECO"  >
 
@@ -56,8 +56,8 @@ export const CommonHeader = () => {
          onClick={handleClickSideNavExpand}
         isActive={isSideNavExpanded}/>
 
-            <HeaderName  href='#main' prefix="ECO">
-              [Products]
+            <HeaderName  href='#main' prefix="" >
+              eco Products
             </HeaderName>
             
             <HeaderNavigation  aria-label="IBM [Platform]">
@@ -216,4 +216,3 @@ export const Example = () => {
   );
 };
 
-  

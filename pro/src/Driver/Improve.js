@@ -38,7 +38,7 @@ export const Imp = () => {
               {({ getLayoutProps }) => (
 
                 <>
-                  <div style={{ color: 'white' }}>
+                  <div style={{ color: 'black' }}>
                     <TitleBarModule title="the power of improving" />
 
                     <p {...getLayoutProps()}>
@@ -59,6 +59,7 @@ export const Imp = () => {
 
         <Row>
           <Column style={{ paddingRight: '0rem', paddingLeft: '0rem', paddingBlockStart: '6rem' }}>
+
             <ResourceList
               design={select('Resource list design', ['normal', 'inline'], 'normal')}
               data={resourceData}
@@ -68,7 +69,10 @@ export const Imp = () => {
                 icon: Edit16,
               }}
             />
+            
           </Column>
+
+
           <Column lg={14}>
 
 

@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react';
 import { PageHeader, Toolbar, ToolbarGroup, ToolbarButton, SidePanel } from '@carbon/ibm-products';
-import { Column, Row, Grid } from 'carbon-components-react';
+import { Column, Row, Grid, Button } from 'carbon-components-react';
 
-import { Share16, Upload16, Save16, Printer16, Undo16, Redo16, ZoomIn16, ZoomOut16, Minimize20, AlignHorizontalCenter16, Ruler20, Pin16, CopyFile16, User20, Wikis20, Debug20 } from '@carbon/icons-react';
+import { Debug20,Wikis20,User20,Share16, Upload16, Save16, Printer16, Undo16, Redo16, ZoomIn16, ZoomOut16, Minimize20, AlignHorizontalCenter16, Ruler20, Pin16, CopyFile16,Eyedropper24,Launch16,Idea16,Rocket32} from '@carbon/icons-react';
+import {options,aceOptions,untypedOptions} from './elements/options';
+
+import {IdeFilter} from '@carbon/ibm-cloud-cognitive-cdai/lib/components/IdeFilter/index';
 import { TreeChart, AlluvialChart } from "@carbon/charts-react";
 import { ScrollAnimations } from '@carbon/ibmdotcom-react';
 import "@carbon/charts/styles.css";
-// import './sty.scss';
 
 import ProgrammaticStatic from '@carbon/charts-react/diagrams/CardNode';
 import CardNode, { CardNodeColumn, CardNodeTitle, CardNodeSubtitle } from '@carbon/charts-react/diagrams/CardNode';
@@ -149,29 +151,35 @@ export const OKR2 = () => {
     setOpen(true);
   };
 
-  const pageActions = [
-    {
-      key: 'secondary',
-      kind: 'secondary',
-      label: 'slideover',
-      onClick: openPanel,
-    },
+ 
 
-  ];
+
 
 
   return (
     <>
-      <div style={{ margin: '-2rem -2rem 0rem -2rem', paddingBlockEnd: '3rem' }}>
+      <div style={{ margin: '0rem -2rem', paddingBlockEnd: '3rem' }}>
 
         <PageHeader
-          title='DIAGRAMS'
-          {...{ pageActions }}>
+          
+         >
 
-          <div style={{ margin: '1rem -1rem -1rem -1rem' }}>
+          <Column >
 
-            <Toolbar>
-              <ToolbarGroup>
+<Toolbar>
+
+  <ToolbarGroup>
+<IdeFilter 
+
+options={options}
+placeholderText="Search for assets, people, tags or types..."
+// searchIcon={CustomIcon}
+>
+  
+</IdeFilter>
+</ToolbarGroup>
+
+  <ToolbarGroup>
                 <ToolbarButton iconDescription="save" renderIcon={Save16}>
                 </ToolbarButton>
                 <ToolbarButton iconDescription="share" renderIcon={Share16}>
@@ -180,8 +188,9 @@ export const OKR2 = () => {
                 </ToolbarButton>
                 <ToolbarButton iconDescription="print" renderIcon={Printer16}>
                 </ToolbarButton>
-              </ToolbarGroup>
-              <ToolbarGroup>
+                </ToolbarGroup>
+
+                <ToolbarGroup>
                 <ToolbarButton iconDescription="undo" renderIcon={Undo16}>
                 </ToolbarButton>
                 <ToolbarButton iconDescription="redo" renderIcon={Redo16}>
@@ -194,19 +203,25 @@ export const OKR2 = () => {
                 </ToolbarButton>
                 <ToolbarButton iconDescription="Align horizontal cente" renderIcon={AlignHorizontalCenter16}>
                 </ToolbarButton>
-              </ToolbarGroup>
-              <ToolbarGroup>
+                </ToolbarGroup>
+
+                <ToolbarGroup>
                 <ToolbarButton iconDescription="Ruler" renderIcon={Ruler20}>
                 </ToolbarButton>
                 <ToolbarButton iconDescription="Pin" renderIcon={Pin16}>
                 </ToolbarButton>
                 <ToolbarButton iconDescription='Copy file' renderIcon={CopyFile16}>
                 </ToolbarButton>
-              </ToolbarGroup>
+                </ToolbarGroup>
+          
             </Toolbar>
-          </div>
+     
+            </Column>
+          
         </PageHeader>
-
+<Button kind='primary' onClick={setOpen}>
+SlideOver
+</Button>
 
       </div>
       <ScrollAnimations selectorTargets={'div'} animation={'fade'} keepAnimations={true}>

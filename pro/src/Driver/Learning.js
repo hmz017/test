@@ -23,12 +23,11 @@ export const lrn = () => {
                title='LEARNING' />
          </div>
          <ScrollAnimations selectorTargets={'h1,p'} animation={'fade'} keepAnimations={true}>
-            <div style={{ color: 'white' }}>
+            <div style={{ color: 'black' }}>
 
                <Row>
                   <Column>
-
-                     <h1>COURSES</h1>
+                     <h1  >COURSES</h1>
 
                      <div style={{ borderTop: "0.2mm solid black" }} />
                      <p style={{ paddingTop: '2rem' }}>Lorem ipsum</p>
@@ -113,7 +112,9 @@ export const lrn = () => {
                      </Column>
 
                   </Column>
+                  
                </Row>
+               
             </div>
          </ScrollAnimations>
 
