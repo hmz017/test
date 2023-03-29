@@ -221,7 +221,7 @@ a.bx--header__menu-item {
 .bx--header__menu-arrow{
 
   margin-left: 0.5rem;
-  fill: black;
+  fill: rgb(2, 0, 0);
 }
 
 .bx--btn.bx--btn--icon-only.bx--tooltip__trigger svg, .bx--btn.bx--btn--icon-only.bx--tooltip__trigger:hover svg, .bx--btn.bx--btn--icon-only.bx--tooltip__trigger:focus svg {
@@ -286,8 +286,10 @@ a.bx--header__menu-item:focus {
     outline: none;
 }
 a.bx--header__menu-item:hover {
-    background-color: rgb(172, 169, 169);
+    border-color: white;
+    background-color: gray;
     color: #000000;
+    
 }
 
 
@@ -306,4 +308,13 @@ a.bx--header__menu-item:hover {
   padding-right: 1rem;
   padding-left: 1rem;
   color: #0c0c0c;
+}
+
+
+.bx--btn--secondary {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0,0,0,0);
+  background-color: #eaedf2;
+  color: #8681c5;
 }

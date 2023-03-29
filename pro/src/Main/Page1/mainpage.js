@@ -72,7 +72,7 @@ delaySpeed={1000}></Typewriter>
             
             <Row>
               <Column>
-                <Button {...primaryButton} kind="primary"  renderIcon={Rocket32} > 
+                <Button {...primaryButton} kind="secondary"  renderIcon={Rocket32} > 
                   <Link href='#review' >start</Link>
                 </Button>
               </Column>
@@ -80,7 +80,7 @@ delaySpeed={1000}></Typewriter>
               <Column >
                 <Button
                   {...secondaryButton}
-                  kind="primary"
+                  kind="secondary"
                   renderIcon={Eyedropper24}
                   style={{ marginLeft: '-150px' }}
                 >
@@ -103,7 +103,7 @@ delaySpeed={1000}></Typewriter>
             <p {...additionalInfo} style={{color:'black'}}>
               To learn more, press on the button
             </p>
-            <Button {...tertiaryButton} kind="primary" renderIcon={Launch16}>
+            <Button {...tertiaryButton} kind="secondary" renderIcon={Launch16}>
               <Link href='https://v10.carbondesignsystem.com/'>learn more</Link>
             </Button>
           
